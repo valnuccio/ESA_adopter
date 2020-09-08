@@ -1,0 +1,37 @@
+<h1>Pet Show </h1>
+
+<div>
+    <%= image_tag(@pet.image) %>
+</div>
+
+<div>
+    <%= label_tag "Name:" %>
+    <%= @pet.name %>
+</div>
+<p>
+<div>
+    <%= label_tag "Species:" %>
+    <%= @pet.animal_type %>
+</div>
+<p>
+<div>
+    <%= label_tag "Rating:" %>
+    <%= @pet.rating %>
+</div>
+<p>
+<div>
+    <%= label_tag "Bio:" %>
+    <%= @pet.bio %>
+</div>
+<p>
+
+<p>
+<div>
+    <%= label_tag "Cost:" %>
+    <%= @pet.cost %>
+</div>
+<p>
+<div>
+<%= label_tag "Owner:" %>
+<%=link_to @pet.user.name, user_path(@pet.user) %>
+</div>

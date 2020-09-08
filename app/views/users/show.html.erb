@@ -1,0 +1,18 @@
+<h1><%= @user.name %> </h1>
+
+
+<h3> <%= @user.location %> </h3>
+<h3>Rating: <%= @user.rating %> </h3>
+<h3> We Will display our image here this is a place holder </h3>
+
+<p> <%= @user.bio %> </p>
+
+<h3>Pets:</h3>
+<hr>
+
+<ul>
+    <% @user.my_pets.each do |pet| %>
+        <li><%= link_to pet.name, pet_path(pet) %> </li>
+    <br>
+    <% end %>
+</ul>

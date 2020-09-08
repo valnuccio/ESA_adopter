@@ -1,0 +1,2 @@
+module ItemRentalsHelper
+end

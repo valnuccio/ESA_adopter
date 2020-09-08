@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pet_id: 1
+  owner_id: 1
+  renter_id: 1
+  rent_length: 1
+  pet_rating: 1.5
+  cost: 1.5
+
+two:
+  pet_id: 1
+  owner_id: 1
+  renter_id: 1
+  rent_length: 1
+  pet_rating: 1.5
+  cost: 1.5
