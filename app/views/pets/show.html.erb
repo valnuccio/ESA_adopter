@@ -11,12 +11,16 @@
 <p>
 <div>
     <%= label_tag "Species:" %>
-    <%= @pet.animal_type %>
+    <%= @pet.breed %>
 </div>
 <p>
 <div>
     <%= label_tag "Rating:" %>
-    <%= @pet.rating %>
+    <% if @pet.rating %>
+        <%= @pet.rating %>
+    <% else %>
+        <%= @no_rating %>
+    <% end %>
 </div>
 <p>
 <div>
@@ -27,11 +31,16 @@
 
 <p>
 <div>
-    <%= label_tag "Cost:" %>
-    <%= @pet.cost %>
+    <%= label_tag "Rate:" %>
+    $<%= @pet.cost%> per day
 </div>
 <p>
 <div>
 <%= label_tag "Owner:" %>
 <%=link_to @pet.user.name, user_path(@pet.user) %>
+</div>
+<p>
+<div>
+<%= label_tag "Available:" %>
+<%= @pet.available%>
 </div>

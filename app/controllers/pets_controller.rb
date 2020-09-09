@@ -7,7 +7,7 @@ class PetsController < ApplicationController
     end
 
     def show
-        
+        @no_rating = "No rating available"
     end
 
     def new
