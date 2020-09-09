@@ -1,18 +1,47 @@
-<h1><%= @user.name %> </h1>
+<% if @user.id == current_user.id %>
+
+    <h1><%= @user.name %> </h1> 
 
 
-<h3> <%= @user.location %> </h3>
-<h3>Rating: <%= @user.rating %> </h3>
-<h3> We Will display our image here this is a place holder </h3>
+    <h3> <%= @user.location %> </h3>
+    <h3>Rating: <%= @user.rating %> </h3>
+    <h3> We Will display our image here this is a place holder </h3>
 
-<p> <%= @user.bio %> </p>
+    <p> <%= @user.bio %> </p>
 
-<h3>Pets:</h3>
-<hr>
+    <h3>Pets:</h3>
+    <hr>
+    <%= link_to "View Other Users", users_path%>
+    <ul>
+        <% @user.my_pets.each do |pet| %>
+            <li><%= link_to pet.name, pet_path(pet) %> </li>
+        <br>
+        <% end %>
+        </ul>
+    
+  <%  else  %>
+    
+       <h1>This is THEIR PAGE <%= @user.name %> </h1> 
 
-<ul>
-    <% @user.my_pets.each do |pet| %>
-        <li><%= link_to pet.name, pet_path(pet) %> </li>
-    <br>
-    <% end %>
-</ul>
+
+    <h3> <%= @user.location %> </h3>
+    <h3>Rating: <%= @user.rating %> </h3>
+    <h3> We Will display our image here this is a place holder </h3>
+
+    <p> <%= @user.bio %> </p>
+
+    <h3>Pets:</h3>
+    <hr>
+    <%= link_to "View Other Users", users_path%>
+    <ul>
+        <% @user.my_pets.each do |pet| %>
+            <li><%= link_to pet.name, pet_path(pet) %> </li>
+        <br>
+        <% end %>
+    </ul>
+
+<% end %>
+    
+
+
+

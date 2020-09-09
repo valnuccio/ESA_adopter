@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show, :edit, :update, :destroy]
 
+# 
+
+
+
 def index
     @users= User.all
 end
@@ -15,10 +19,10 @@ end
 
 def create
     @user = User.create(user_params)
-    if @user.valid?
-        session[:user] = @user.id
-        flash[:success] = "Welcome!"
-    end
+        # if @user.valid?
+        #     session[:user] = @user.id
+        #     flash[:success] = "Welcome!"
+        # end
     redirect_to user_path(@user) 
 end
 
@@ -31,6 +35,11 @@ def update
     redirect_to user_path(@user)
 end
 
+def not_me
+
+end
+
+
 private
 def find_user
     @user = User.find(params[:id])
@@ -40,6 +49,10 @@ def user_params
     params.require(:user).permit!
 end
 
+def verify_self
+  
+
+end
     
 
 

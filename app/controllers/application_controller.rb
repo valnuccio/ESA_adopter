@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:home]
 
-    # def logged_in_user
-        
-    # end
-
+    def after_sign_in_path_for(resource)
+        user_path(current_user)
+    end
 end

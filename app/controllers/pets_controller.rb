@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
     #validations for unique pet names and owners
     before_action :find_pet, only: [:show, :edit, :update, :destroy]
+    
 
     def index
         @pets = Pet.all

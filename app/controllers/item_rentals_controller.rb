@@ -1,5 +1,6 @@
 class ItemRentalsController < ApplicationController
     before_action :find_item_rental, only: [:show,:create, :edit, :update]
+    
 
     def index
         @item_rentals= ItemRental.all
@@ -41,5 +42,5 @@ class ItemRentalsController < ApplicationController
         params.require(:item_rental).permit!
     end
 
-    
+
 end
