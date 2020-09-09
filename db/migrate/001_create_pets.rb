@@ -6,7 +6,7 @@ class CreatePets < ActiveRecord::Migration[6.0]
       t.float :rating
       t.string :bio
       t.string :image
-      t.float :cost
+      t.integer :cost
 
       t.timestamps
     end

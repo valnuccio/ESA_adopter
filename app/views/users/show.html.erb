@@ -1,8 +1,13 @@
 <% if @user.id == current_user.id %>
 
+
     <h1> Welcome to Your Account <%= @user.name %> </h1> 
 
 
+    <%= button_tag "Edit Profile" %>
+    <%# TODO Allow adding of information Location, img, pets%>
+
+<<<<<<< HEAD
     <h3> <%= @user.location %> </h3>
     <h3> Your Current User Rating is: <%= @user.rating %> </h3>
     <h3> We Will display our image here this is a place holder </h3>
@@ -12,46 +17,44 @@
     <h3>Pets:</h3>
     <hr>
     <%= link_to "View Other Users", users_path%>
+    
     <ul>
         <% @user.my_pets.each do |pet| %>
-            <li><%= link_to pet.name, pet_path(pet) %> </li>
-        <br>
+            <li><%= link_to pet.name, pet_path(pet) %> </li><br>
         <% end %>
-        </ul>
+    </ul>
     
-    <%  else  %>
+<%  else  %>
     
-    <h1>This is THEIR PAGE <%= @user.name %> </h1> 
+    <h1> <%= @user.name %> </h1> 
 
 
     <h3> <%= @user.location %> </h3>
     <h3>Rating: <%= @user.rating %> </h3>
     <% if @post.main_image.attached? %>
          <%= image_tag @post.main_image %>
+
+    <h3> Location: <%= @user.location %> </h3>
+    <%# Rating: <%= @user.rating %> 
+    
+    <% if @user.img_url == nil %>
+        <h3> They are camera shy ^_^ </h3>
+    <% else %>
+        <%= image_tag(@user.img_url) %>
+
     <% end %>
 
     <p> <%= @user.bio %> </p>
 
-    <h3>Pets:</h3>
+    <h3>Pets For Rent:</h3>
     <hr>
     <%= link_to "View Other Users", users_path%>
     <ul>
         <% @user.my_pets.each do |pet| %>
-            <li><%= link_to pet.name, pet_path(pet) %> </li>
+            <li><%= link_to pet.name, pet_path(pet) %> <br>
+            Available: <%= pet.available %>
+            </li>
         <br>
         <% end %>
     </ul>
-
 <% end %>
-    
-
-
-
-<ul>
-    <% @user.my_pets.each do |pet| %>
-        <li><%= link_to pet.name, pet_path(pet) %> <br>
-        Available: <%= pet.available %>
-        </li>
-    <br>
-    <% end %>
-</ul>

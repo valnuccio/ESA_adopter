@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_09_09_174304) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -32,6 +33,9 @@ ActiveRecord::Schema.define(version: 2020_09_09_174304) do
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
+=======
+ActiveRecord::Schema.define(version: 8) do
+>>>>>>> ad949ad610c471a69efd3637f77c7234e7abfddc
 
   create_table "installs", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_174304) do
     t.float "rating"
     t.string "bio"
     t.string "image"
-    t.float "cost"
+    t.integer "cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
