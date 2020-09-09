@@ -3,8 +3,11 @@
 
     <h1> Welcome to Your Account <%= @user.name %> </h1> 
     <%= button_to "Edit Profile", edit_user_path(@user.id), :method => "get" %>
-
-    
+        <% if @user.main_image.attached? %>
+            <%= image_tag url_for(@user.main_image) %>
+        <% end %>
+             
+        
 
 
     <h3> <%= @user.location %> </h3>
@@ -46,9 +49,7 @@
 
     <h3> <%= @user.location %> </h3>
     <h3>Rating: <%= @user.rating %> </h3>
-    <% if @post.main_image.attached? %>
-        <%= image_tag @post.main_image %>
-    <% end %>
+  
 
     <h3> Location: <%= @user.location %> </h3>
     <%# Rating: <%= @user.rating %> 
