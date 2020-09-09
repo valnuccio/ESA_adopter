@@ -27,12 +27,12 @@ end
 
 
     Pet.create(name: Faker::Creature::Dog.name,
-                animal_type: animal.sample,
-                rating: 0,
+                breed: Faker::Creature::Dog.breed,
                 bio: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true),
                 image: response.parsed_response["message"] ,
-                cost: 0,
-                user_id: User.all.sample.id
+                cost: rand(10..50).to_f.round(2),
+                user_id: User.all.sample.id,
+                available: true
                 )
 end
 

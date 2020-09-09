@@ -19,9 +19,9 @@
         <% end %>
         </ul>
     
-  <%  else  %>
+    <%  else  %>
     
-       <h1>This is THEIR PAGE <%= @user.name %> </h1> 
+    <h1>This is THEIR PAGE <%= @user.name %> </h1> 
 
 
     <h3> <%= @user.location %> </h3>
@@ -45,3 +45,11 @@
 
 
 
+<ul>
+    <% @user.my_pets.each do |pet| %>
+        <li><%= link_to pet.name, pet_path(pet) %> <br>
+        Available: <%= pet.available %>
+        </li>
+    <br>
+    <% end %>
+</ul>
