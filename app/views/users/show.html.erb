@@ -5,9 +5,8 @@
 
 
     <%= button_tag "Edit Profile" %>
-    <%# TODO Allow adding of information Location, img, pets%>
 
-<<<<<<< HEAD
+
     <h3> <%= @user.location %> </h3>
     <h3> Your Current User Rating is: <%= @user.rating %> </h3>
     <h3> We Will display our image here this is a place holder </h3>
@@ -33,6 +32,7 @@
     <h3>Rating: <%= @user.rating %> </h3>
     <% if @post.main_image.attached? %>
          <%= image_tag @post.main_image %>
+    <% end %>
 
     <h3> Location: <%= @user.location %> </h3>
     <%# Rating: <%= @user.rating %> 
