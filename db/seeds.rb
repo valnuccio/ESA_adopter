@@ -7,30 +7,36 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-require 'httparty'
+require 'rest-client'
+require 'json'
+# require 'pry'
 
 5.times do
+    # get random user photo from api
+    response = RestClient.get('https://randomuser.me/api/')
     
+    # binding.pry
     user = User.new
     user.name = Faker::Name.first_name
     user.email = "#{user.name}@gmail.com"
     user.password = '123456789'
     user.bio = Faker::Lorem.paragraph(sentence_count: 4, supplemental: true)
     user.location = 'New York'
+    user.img_url = JSON.parse(response)["results"][0]["picture"]["large"]
     user.save
 end
 
 10.times do
     animal = ["cat","dog","hamster","turtle","goldfish"]
-    url = 'https://dog.ceo/api/breeds/image/random'
-    response = HTTParty.get(url)
+    response = RestClient.get('https://dog.ceo/api/breeds/image/random')
+    
 
 
     Pet.create(name: Faker::Creature::Dog.name,
                 breed: Faker::Creature::Dog.breed,
                 bio: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true),
-                image: response.parsed_response["message"] ,
-                cost: rand(10..50).to_f.round(2),
+                image: JSON.parse(response)["message"] ,
+                cost: rand(10..50),
                 user_id: User.all.sample.id,
                 available: true
                 )

@@ -56,7 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Enable faker data
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
-# httparty for parse json data
-gem 'httparty', '~> 0.13.7'
-
 gem 'devise', '~> 4.4', '>= 4.4.3'
+
+gem 'rest-client', :git => 'https://github.com/rest-client/rest-client.git', :branch => 'master'
