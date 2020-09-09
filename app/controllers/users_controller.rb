@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show, :edit, :update, :destroy]
 
-# 
+
 
 
 
@@ -43,6 +43,7 @@ end
 private
 def find_user
     @user = User.find(params[:id])
+    @user = Post.with_attached_main_image.find(params[:id])
 end
 
 def user_params
