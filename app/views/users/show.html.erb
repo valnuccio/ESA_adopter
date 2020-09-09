@@ -1,27 +1,31 @@
 <% if @user.id == current_user.id %>
 
-
     <h1> Welcome to Your Account <%= @user.name %> </h1> 
-    <%= button_to "Edit Profile", edit_user_path(@user.id), :method => "get" %>
-        <% if @user.main_image.attached? %>
-            <%= image_tag url_for(@user.main_image) %>
-        <% end %>
-             
-        
 
+    <% if @user.img_url %>
+        <%= image_tag(@user.img_url) %>
+    <% else %>
+        Dont be camera shy ^_^ <br>
+        Edit your profile and add an image!
+    <% end %>
+    
+    <p></p>
+    <%= button_to "Edit Profile", edit_user_path(@user.id), :method => "get" %> <br>
 
-    <h3> <%= @user.location %> </h3>
-    <h3> Your Current User Rating is: <%= @user.rating %> </h3>
-    <h3> We Will display our image here this is a place holder </h3>
 
     <div>
-        <%= label_tag "Bio:" %>
+        <h3> <%= label_tag "Location:" %> </h3>
+        <%= @user.location %> </p>
+    </div>
+
+    <div>
+        <h3><%= label_tag "Bio:" %></h3>
         <%= @user.bio %> </p>
     </div>
     
 
     <div>
-        <%= label_tag "Pets:" %>
+        <h3><%= label_tag "Pets:" %></h3>
         <ul>
             <% @user.pets.each do |pet| %>
                 <li><%= pet %></li>
@@ -29,13 +33,10 @@
         </ul>
     </div>
 
-    
     <hr>
     <%= link_to "View Other Users", users_path%>
-    
-
-    
-    
+    <p></p>
+    <%= link_to "Find a pet to rent", pets_path%>
     <ul>
         <% @user.my_pets.each do |pet| %>
             <li><%= link_to pet.name, pet_path(pet) %> </li><br>
