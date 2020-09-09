@@ -2,20 +2,36 @@
 
 
     <h1> Welcome to Your Account <%= @user.name %> </h1> 
+    <%= button_to "Edit Profile", edit_user_path(@user.id), :method => "get" %>
 
-
-    <%= button_tag "Edit Profile" %>
+    
 
 
     <h3> <%= @user.location %> </h3>
     <h3> Your Current User Rating is: <%= @user.rating %> </h3>
     <h3> We Will display our image here this is a place holder </h3>
 
-    <p> <%= @user.bio %> </p>
+    <div>
+        <%= label_tag "Bio:" %>
+        <%= @user.bio %> </p>
+    </div>
+    
 
-    <h3>Pets:</h3>
+    <div>
+        <%= label_tag "Pets:" %>
+        <ul>
+            <% @user.pets.each do |pet| %>
+                <li><%= pet %></li>
+            <% end %>
+        </ul>
+    </div>
+
+    
     <hr>
     <%= link_to "View Other Users", users_path%>
+    
+
+    
     
     <ul>
         <% @user.my_pets.each do |pet| %>
@@ -31,7 +47,7 @@
     <h3> <%= @user.location %> </h3>
     <h3>Rating: <%= @user.rating %> </h3>
     <% if @post.main_image.attached? %>
-         <%= image_tag @post.main_image %>
+        <%= image_tag @post.main_image %>
     <% end %>
 
     <h3> Location: <%= @user.location %> </h3>

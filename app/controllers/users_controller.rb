@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show, :edit, :update, :destroy]
 
-
-
-
-
 def index
     @users= User.all
 end
@@ -24,10 +20,6 @@ def create
         #     flash[:success] = "Welcome!"
         # end
     redirect_to user_path(@user) 
-end
-
-def edit
-
 end
 
 def update

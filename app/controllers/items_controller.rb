@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
     end
 
     def create
-     @item = Item.create(item_params)
-     redirect_to item_path(@item)
+        @item = Item.create(item_params)
+        redirect_to item_path(@item)
     end
 
     def edit
