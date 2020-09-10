@@ -22,6 +22,23 @@
     Logged in as <strong><%= current_user.email %></strong>.
     <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
     <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+<body>
+	<nav id="nav1">
+	  <ul>
+      Logged in as <strong><%= current_user.email %></strong>.
+	       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+	  </ul>
+	</nav>
+	<nav id="nav2">
+	  <ul>
+	    <%= link_to "Browse User Profiles", users_path, :class => 'navbar-link'%>
+	    <%= link_to 'View Pets', pets_path, :class => 'navbar-link' %> |
+
+	  </ul>
+	</nav>
+</body>
   <% else %>
     <%# <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> 
     <%# <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>

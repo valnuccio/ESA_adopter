@@ -29,8 +29,8 @@
     <div>
         <h3><%= label_tag "Pets rented:" %></h3>
         <ul>
-            <% @user.pets.each do |pet| %>
-                <li><%= pet %></li>
+           <% @user.pets.each do |pet| %>
+                <li> <%=link_to pet.name, pet_path(pet) %></li>
             <% end %>
         </ul>
     </div>
@@ -38,14 +38,14 @@
     <div>
         <h3><%= label_tag "My pets:" %></h3>
         <ul>
-            <% @user.pets.each do |pet| %>
-                <li><%= pet %></li>
-            <% end %>
+          <% @user.my_pets.each do |pet| %>
+            <li><%= link_to pet.name, pet_path(pet) %> </li><br>
+        <% end %>
         </ul>
     </div>
 
     <hr>
-    <%= link_to "View Other Users", users_path%>
+    
     <p></p>
     <%= link_to "Find a pet to rent", pets_path%>
     <ul>
@@ -86,7 +86,7 @@
         <h3><%= label_tag "Pets rented:" %></h3>
         <ul>
             <% @user.pets.each do |pet| %>
-                <li><%= link_to pet.name, pet_path(pet) %></li>
+                <li> <%=link_to pet.name, pet_path(pet) %></li>
             <% end %>
         </ul>
     </div>
@@ -94,10 +94,15 @@
     <div>
         <h3><%= label_tag "My pets:" %></h3>
         <ul>
-            <% @user.my_pets.each do |pet| %>
-                <li><%= pet.name %></li>
+            <% if @user.my_pets != nil %>
+                    <% @user.my_pets.each do |pet| %>
+                    <li><%= pet.name %></li>
+                    <% end %>
+                    </ul>
+            <% else %>
+                <p>You don't currently have any pets listed</p>
             <% end %>
-        </ul>
+                
     </div>
 
     <hr>

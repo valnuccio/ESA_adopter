@@ -44,7 +44,7 @@ end
                 image: JSON.parse(response)["message"] ,
                 cost: rand(10..50),
                 user_id: User.all.sample.id,
-                available: true
+                available: "true"
                 )
 end
 

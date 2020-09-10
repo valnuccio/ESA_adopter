@@ -43,22 +43,30 @@
 <p>
 <div>
     <%= label_tag "Available:" %>
-    <%= @pet.available %>
+    <% if @pet.available == "true" %>
+       <p>Pet is currently available! </p>
+    <% else%>
+        <% if pet.user_id != current_user.id %>
+            <p>"Pet is currently being rented out. Why not checkout some of our other pets?</p>
+            <%= link_to "Back to All Pets", pets_path(@pets) %>
+        <% end %>
+    
+    <% end %>
 </div>
+
+
 <p>
 
-<% if @pet.available == true && @pet.user_id != current_user.id%>
-    <div>
-        <%# @pet.available == false %>
-        <%= button_to("Rent Me", new_rental_path, method: :get, :class => 'ui secondary button') %>
-    </div>
-<% else %>
-    <% if @pet.user_id == current_user.id %>
-    <% else %>
-    <div>
-        <%= button_to("Rent Me", new_rental_path, method: :get, :class => 'ui secondary button') %>
-    </div>
-<% end %>
+    <% if @pet.available == true && @pet.user_id != current_user.id && @pet.user_id != @user %>
+        <%= form_for Rental.new do |f|%>
+        <%= f.label :rent_length, "How many days would you like to rent #{@pet.name} for?" %> 
+        <%= f.number_field :rent_length, max: 30, min: 1 %>
+        <%= f.hidden_field :pet_id, value: @pet.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit%>
+    <% end %>
+
+
     
     <%# Must change @pet.available to false %>
     <%# Add rented pet to user %>

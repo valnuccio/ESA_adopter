@@ -1,1 +1,13 @@
-<h1>Rental Show </h1>
+<h1>Congratulations!</h1>
+
+
+<h2>You have reserved 
+<%= @rental.pet.name %> for <%= @rental.rent_length %> days!</h2>
+
+<h3>$<%= @rental.cost %> will be deducted from your account and <%= @rental.pet.user.name %> will be in touch with you soon to coordinate pickup! </h3>
+
+
+What would you like to do now?
+<%= link_to "Check out Other Pets", pets_path%>
+<%= link_to "Go back to my User Page", user_path%>
+<%= link_to "View my Rental history", rentals_path %>

@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_030749) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.boolean "available", default: true
+    t.string "available", default: "true"
   end
 
   create_table "rentals", force: :cascade do |t|

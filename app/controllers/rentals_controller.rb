@@ -17,7 +17,9 @@ class RentalsController < ApplicationController
 
     def create
         @rental = Rental.create(rental_params)
-        redirect_to user_path(@rental.user)
+        @rental.pet.available = "false"
+        byebug
+        redirect_to rental_path(@rental.id)
     end
 
     def edit
