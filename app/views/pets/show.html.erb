@@ -45,12 +45,23 @@
 </div>
 <p>
 
-<% if @pet.available == true %>
+<% if @pet.available == true && @pet.user_id != current_user.id%>
     <div>
-        <%= button_tag "Rent Me"%>
-<% else %> 
-    <p>Pet not currently available </p>
+        
+        <%# @pet.available == false %>
+        <%= form_for @pet do |f| %>
+            <%= f.button "Rent Me"%>
+        <% end %>
+        
     </div>
+<% else %>
+    <% if @pet.user_id == current_user.id %>
+    <% else %>
+    <div>
+        <p>Pet not currently available </p>
+    </div>
+<% end %>
+    
     <%# Must change @pet.available to false %>
     <%# Add rented pet to user %>
     <%# Can not rent a dog you own %>
