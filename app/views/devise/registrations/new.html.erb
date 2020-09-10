@@ -26,6 +26,20 @@
   <%= f.file_field :main_image %>
   </div>
 
+  <div class = "field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </div>
+
+  <div class = "field">
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  </div>
+
+  <div class = "field">
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
