@@ -5,9 +5,7 @@
     <% if current_user.main_image.attached? %>
         <%= image_tag url_for(current_user.main_image), id: "profile_main", class:"profile_pic" %>
     <% elsif @user.img_url %>
-    <%# This is to ensure seed data images show  %>
-
-    
+    <%# This is to ensure seed data images show  %>    
         <%= image_tag(@user.img_url) %>
     <% else %>
         Dont be camera shy ^_^ <br>
