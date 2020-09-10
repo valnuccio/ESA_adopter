@@ -28,7 +28,7 @@ end
 
 private
 def find_user
-    @user = current_user
+    @user = User.find(params[:id])
     
 end
 
