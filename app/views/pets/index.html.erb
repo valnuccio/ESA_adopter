@@ -5,7 +5,7 @@
         <div class="column">
             <div class="ui segment">
                 <% if pet.image %>
-                    <img class="ui medium rounded image"" src= <%= pet.image %> > 
+                    <img class="ui medium rounded image" src= <%= pet.image %> > 
                 <% end %>
                 <p></p>
                 <%=link_to pet.name, pet_path(pet) %>
@@ -14,23 +14,23 @@
     <% end %>
 </div>
 
-<%# middle aligned %>
-<%# Template %>
-
-<%# <div class="ui three column grid">
-    <div class="column">
-        <div class="ui segment">
-        <img>
+<div class="ui card">
+    <div class="image">
+        <img src="/images/avatar2/large/kristy.png">
+    </div>
+    <div class="content">
+        <a class="header">Kristy</a>
+        <div class="meta">
+            <span class="date">Joined in 2013</span>
+        </div>
+        <div class="description">
+            Kristy is an art director living in New York.
         </div>
     </div>
-    <div class="column">
-        <div class="ui segment">
-        <img>
-        </div>
+    <div class="extra content">
+        <a>
+        <i class="user icon"></i>
+        22 Friends
+        </a>
     </div>
-    <div class="column">
-        <div class="ui segment">
-        <img>
-        </div>
-    </div>
-</div> %>
+</div>

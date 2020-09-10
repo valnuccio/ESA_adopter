@@ -1,20 +1,20 @@
 <% if @user.id == current_user.id %>
 
-    <h1> Welcome to Your Account <%= @user.name %> </h1> 
+    <h1> Welcome <%= @user.name.titleize %> </h1> 
 
     <% if current_user.main_image.attached? %>
-        <%= image_tag url_for(current_user.main_image) %>
-    <% end %>
+        <%= image_tag url_for(current_user.main_image), id: "profile_main", class:"profile_pic" %>
+    <% elsif @user.img_url %>
+    <%# This is to ensure seed data images show  %>
 
-    <% if @user.img_url %>
+    
         <%= image_tag(@user.img_url) %>
     <% else %>
         Dont be camera shy ^_^ <br>
         Edit your profile and add an image!
     <% end %>
     
-    <p></p>
-    <%= button_to "Edit Profile", edit_user_path(@user.id), :method => "get" %> <br>
+    
 
     <div>
         <h3> <%= label_tag "Location:" %> </h3>
