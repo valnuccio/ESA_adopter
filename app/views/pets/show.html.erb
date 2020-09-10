@@ -57,7 +57,7 @@
 
 <p>
 
-    <% if @pet.available == true && @pet.user_id != current_user.id && @pet.user_id != @user %>
+    <% if @pet.available == "true" && @pet.user_id != current_user.id %>
         <%= form_for Rental.new do |f|%>
         <%= f.label :rent_length, "How many days would you like to rent #{@pet.name} for?" %> 
         <%= f.number_field :rent_length, max: 30, min: 1 %>
