@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :pets, through: :rentals
   has_many :my_pets, foreign_key: "user_id", class_name: "Pet"
   
+  def capitalize 
+    self.name.split.capitalize.join
+  end
 
 end
 

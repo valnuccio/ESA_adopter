@@ -12,44 +12,44 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
 
-     </head>
-      <body>
-    <ul class="navbar-nav mr-auto">
+  </head>
+  <body>
+<div class="pusher">
+    <div class="ui inverted vertical masthead center aligned segment">
+        <div class="ui container">
+            <div class="ui large secondary inverted pointing menu">
+                <% if user_signed_in? %>
+                  <div class="left item">
+                    <%= link_to "Home", user_path(current_user), :class => 'ui inverted button'%>| 
+                    <%= link_to 'View Pets', pets_path, :class => 'ui inverted button'  %>
+                  </div>
+                <% end %>
 
-   <p class="navbar-text float-right">
+                <div class="right item">
+                  <% if user_signed_in? %>
+                    <ul>
+                      Logged in as: <strong><%= current_user.name.titleize %></strong>
+                      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                    <% else %>
+                      <%= link_to "Sign up", new_user_registration_path, :class => 'ui inverted button'  %> |
+                      <%= link_to "Login", new_user_session_path, :class => 'ui inverted button'  %>
+                    <% end %>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        <% if user_signed_in? == false %>
+          <div class="ui text container">
+              <h1 class="ui inverted header">
+                  Val & Vin's Emotional Support Animals 
+              </h1>
+              <h3>Caring for you during COVID</h3>
+          
+          <% end %>
+    </div>
+</div>
 
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-
-<body>
-	<nav id="nav1">
-	  <ul>
-      Logged in as <strong><%= current_user.email %></strong>.
-	       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-	  </ul>
-	</nav>
-	<nav id="nav2">
-	  <ul>
-	    <%= link_to "Browse User Profiles", users_path, :class => 'navbar-link'%>
-	    <%= link_to 'View Pets', pets_path, :class => 'navbar-link' %> |
-
-	  </ul>
-	</nav>
-</body>
-  <% else %>
-    <%# <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> 
-    <%# <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-  <% end %>
-</p>
-  </ul>
-  
-  
- 
-
- 
     <%= yield %>
 
   <p class="notice"><%= notice %> </p>
