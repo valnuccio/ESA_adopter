@@ -1,9 +1,36 @@
 <h1>Pets Index </h1>
 
-<div>
-    <ul>
-        <% @pets.each do |pet| %>
-            <li> <%=link_to pet.name, pet_path(pet) %> </li>
-        <% end %>
-    </ul>
+<div class="ui three column grid">
+    <% @pets.each do |pet| %>
+        <div class="column">
+            <div class="ui segment">
+                <% if pet.image %>
+                    <img class="ui medium rounded image"" src= <%= pet.image %> > 
+                <% end %>
+                <p></p>
+                <%=link_to pet.name, pet_path(pet) %>
+            </div>
+        </div>
+    <% end %>
 </div>
+
+<%# middle aligned %>
+<%# Template %>
+
+<%# <div class="ui three column grid">
+    <div class="column">
+        <div class="ui segment">
+        <img>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui segment">
+        <img>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui segment">
+        <img>
+        </div>
+    </div>
+</div> %>

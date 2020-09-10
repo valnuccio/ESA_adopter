@@ -2,6 +2,8 @@
 
 <% if @pet.main_image.attached? %>
     <%= image_tag @pet.main_image %>
+    <% elsif @pet.image %> <%# This is to enable seeded photos to populate. Do not delete %>
+        <%= image_tag @pet.image %>
 <% end %>
 
 <% if @pet.user == current_user %>
@@ -47,18 +49,14 @@
 
 <% if @pet.available == true && @pet.user_id != current_user.id%>
     <div>
-        
         <%# @pet.available == false %>
-        <%= form_for @pet do |f| %>
-            <%= f.button "Rent Me"%>
-        <% end %>
-        
+        <%= button_to("Rent Me", new_rental_path, method: :get, :class => 'ui secondary button') %>
     </div>
 <% else %>
     <% if @pet.user_id == current_user.id %>
     <% else %>
     <div>
-        <%= button_to "Rent Me", new_rental_path, method: :get %>
+        <%= button_to("Rent Me", new_rental_path, method: :get, :class => 'ui secondary button') %>
     </div>
 <% end %>
     
