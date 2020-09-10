@@ -2,8 +2,8 @@
 
     <h1> Welcome to Your Account <%= @user.name %> </h1> 
 
-    <% if @user.main_image.attached? %>
-        <%= image_tag url_for(@user.main_image) %>
+    <% if current_user.main_image.attached? %>
+        <%= image_tag url_for(current_user.main_image) %>
     <% end %>
 
     <% if @user.img_url %>

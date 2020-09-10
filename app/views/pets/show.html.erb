@@ -1,9 +1,12 @@
 <h1>Pet Show </h1>
 
-<div>
-    <%= image_tag(@pet.image) %>
-</div>
+<% if @pet.main_image.attached? %>
+    <%= image_tag @pet.main_image %>
+<% end %>
 
+<% if @pet.user == current_user %>
+        <% link_to "Edit Pet Profile", edit_pet_path %>
+<% end %>
 <div>
     <%= label_tag "Name:" %>
     <%= @pet.name %>
@@ -33,7 +36,7 @@
 <p>
 <div>
 <%= label_tag "Owner:" %>
-<%=link_to @pet.user.name, user_path(@pet.user) %>
+<%= link_to @pet.user.name, user_path(@pet.user) %>
 </div>
 <p>
 <div>
@@ -45,6 +48,8 @@
 <% if @pet.available == true %>
     <div>
         <%= button_tag "Rent Me"%>
+<% else %> 
+    <p>Pet not currently available </p>
     </div>
     <%# Must change @pet.available to false %>
     <%# Add rented pet to user %>

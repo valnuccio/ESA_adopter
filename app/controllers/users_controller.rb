@@ -14,17 +14,11 @@ def new
 end
 
 def create
-    @user = User.create(user_params)
-        # if @user.valid?
-        #     session[:user] = @user.id
-        #     flash[:success] = "Welcome!"
-        # end
-    redirect_to user_path(@user) 
+
 end
 
 def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+
 end
 
 def not_me
@@ -35,12 +29,10 @@ end
 private
 def find_user
     @user = User.find(params[:id])
-    @user = User.with_attached_main_image.find(params[:id])
+    
 end
 
-def user_params
-    params.require(:user).permit!
-end
+
 
 def verify_self
   
