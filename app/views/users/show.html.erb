@@ -57,8 +57,15 @@
     
 <%  else  %>
     
-    <h1> <%= @user.name %> </h1> 
+    <h1> <%= @user.name.titleize %> </h1> 
 
+
+    <% if current_user.main_image.attached? %>
+        <%= image_tag url_for(current_user.main_image), id: "profile_main", class:"profile_pic" %>
+    <% else @user.img_url %>
+    <%# This is to ensure seed data images show  %>
+        <%= image_tag(@user.img_url) %>
+    <% end %>
 
     <h3> <%= @user.location %> </h3>
     <h3>Rating: <%= @user.rating %> </h3>
@@ -66,12 +73,7 @@
 
     <h3> Location: <%= @user.location %> </h3>
     <%# Rating: <%= @user.rating %> 
-    
-    <% if @user.img_url == nil %>
-        <h3> They are camera shy ^_^ </h3>
-    <% else %>
-        <%= image_tag(@user.img_url) %>
-    <% end %>
+  
     <div>
         <h3> <%= label_tag "Location:" %> </h3>
         <%= @user.location %> </p>
