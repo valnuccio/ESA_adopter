@@ -44,7 +44,7 @@
 
 <% if @pet.available == true %>
     <div>
-        <%= button_tag "Rent Me"%>
+        <%= button_to "Rent Me", new_rental_path, method: :get %>
     </div>
     <%# Must change @pet.available to false %>
     <%# Add rented pet to user %>
