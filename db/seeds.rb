@@ -6,10 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 require 'faker'
 require 'rest-client'
 require 'json'
 # require 'pry'
+
+Rental.destroy_all
+User.destroy_all
+Pet.destroy_all
+
 
 5.times do
     # get random user photo from api

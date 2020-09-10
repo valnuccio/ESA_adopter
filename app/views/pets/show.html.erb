@@ -58,7 +58,7 @@
     <% if @pet.user_id == current_user.id %>
     <% else %>
     <div>
-        <p>Pet not currently available </p>
+        <%= button_to "Rent Me", new_rental_path, method: :get %>
     </div>
 <% end %>
     
