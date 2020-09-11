@@ -15,18 +15,36 @@
  */
 
  body {
-    
+    padding-left: 10 em;
     
    
  }
 
  .profile_pic {
-    width: 30%;
+    width: 40%;
     height: auto;
-    padding-left: 20px;
+    padding-left: 30px;
  }
 
  .card_container{
     display:block;
     padding-left: 30 px;
  }
+
+#ui_id{
+   margin-top:20px;
+}
+
+h1{
+   font-size: 60px;
+}
+
+.title{
+   font-size: 60px;
+   font-weight: 700;
+}
+
+.margins{
+   margin-left:20px;
+   margin-top: 20px;
+}

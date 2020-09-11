@@ -1,27 +1,29 @@
+<div class="margins">
+
 <% if @user.id == current_user.id %>
 
-    <h1> Welcome <%= @user.name.titleize %> </h1> 
+    <h1 class="ui header"> Welcome <%= @user.name.titleize %> </h1> 
+
 
     <% if current_user.main_image.attached? %>
         <%= image_tag url_for(current_user.main_image), id: "profile_main", class:"profile_pic" %>
     <% elsif @user.img_url %>
-    <%# This is to ensure seed data images show  %>    
-        <%= image_tag(@user.img_url) %>
+    <%# This is to ensure seed data images show  %>
+        <%= image_tag(@user.img_url, class: 'profile_pic')  %>  
     <% else %>
         Dont be camera shy ^_^ <br>
         Edit your profile and add an image!
     <% end %>
     
     
-
     <div>
         <h3> <%= label_tag "Location:" %> </h3>
-        <%= @user.location %> </p>
+        <%= @user.location %> </p><br>
     </div>
 
     <div>
         <h3><%= label_tag "Bio:" %></h3>
-        <%= @user.bio %> </p>
+        <%= @user.bio %> </p><br>
     </div>
     
     <div>
@@ -31,55 +33,54 @@
                 <li> <%=link_to pet.name, pet_path(pet) %></li>
             <% end %>
         </ul>
+          <%= link_to "Find a pet to rent", pets_path%> <br>
+
     </div>
-    
+    <br>
     <div>
         <h3><%= label_tag "My pets:" %></h3>
         <ul>
+        <% if @user.my_pets != nil %>
           <% @user.my_pets.each do |pet| %>
             <li><%= link_to pet.name, pet_path(pet) %> </li><br>
+            <% end%>
+        <% else%>
+            <p> You have no pets in the database </p>
         <% end %>
         </ul>
+          <%= button_to "Add Pets", new_pet_path, :method => "get" %> <br>
     </div>
 
     <hr>
     
-    <p></p>
-    <%= link_to "Find a pet to rent", pets_path%>
-    <ul>
-        <% @user.my_pets.each do |pet| %>
-            <li><%= link_to pet.name, pet_path(pet) %> </li><br>
-        <% end %>
-    </ul>
-    <%= button_to "Add More Pets", new_pet_path, :method => "get" %> <br>
+   
+  
+    
+    
+  
     
 <%  else  %>
     
-    <h1> <%= @user.name.titleize %> </h1> 
+    <h1 class="title"> <%= @user.name.titleize %> </h1> 
 
 
-    <% if current_user.main_image.attached? %>
+    <% if @user.main_image.attached? %>
         <%= image_tag url_for(current_user.main_image), id: "profile_main", class:"profile_pic" %>
     <% else @user.img_url %>
     <%# This is to ensure seed data images show  %>
-        <%= image_tag(@user.img_url) %>
+     <%= image_tag(@user.img_url, class: 'profile_pic') %>
     <% end %>
 
-    <h3> <%= @user.location %> </h3>
-    <h3>Rating: <%= @user.rating %> </h3>
-  
 
-    <h3> Location: <%= @user.location %> </h3>
-    <%# Rating: <%= @user.rating %> 
   
     <div>
         <h3> <%= label_tag "Location:" %> </h3>
-        <%= @user.location %> </p>
+       <p> <%= @user.location %> </p><br>
     </div>
 
     <div>
         <h3><%= label_tag "Bio:" %></h3>
-        <%= @user.bio %> </p>
+        <%= @user.bio %> </p> <br>
     </div>
     
     <div>
@@ -90,28 +91,21 @@
             <% end %>
         </ul>
     </div>
-    
-    <div>
+    <br>
+    <div> 
         <h3><%= label_tag "My pets:" %></h3>
         <ul>
-            <% if @user.my_pets != nil %>
-                    <% @user.my_pets.each do |pet| %>
-                    <li><%= pet.name %></li>
-                    <% end %>
-                    </ul>
-            <% else %>
-                <p>You don't currently have any pets listed</p>
-            <% end %>
+             <% if @user.my_pets != nil %>
+                <% @user.my_pets.each do |pet| %>
+            <li><%= link_to pet.name, pet_path(pet) %> </li><br>
+            <% end%>
+        <% else%>
+            <p> You have no pets in the database </p>
+        <% end %>
+        </ul>
+    </div>
                 
     </div>
 
-    <hr>
-    <%= link_to "View Other Users", users_path%>
-    <p></p>
-    <%= link_to "Find a pet to rent", pets_path%>
-    <ul>
-        <% @user.my_pets.each do |pet| %>
-            <li><%= link_to pet.name, pet_path(pet) %> </li><br>
-        <% end %>
-    </ul>
 <% end %>
+</div>
