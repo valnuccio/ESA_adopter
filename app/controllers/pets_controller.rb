@@ -38,6 +38,11 @@ class PetsController < ApplicationController
         redirect_to user_path(@pet.user)
     end
 
+    def rent_pet
+        
+    end
+    
+
     private
 
     def find_pet

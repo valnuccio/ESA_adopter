@@ -17,7 +17,7 @@ class RentalsController < ApplicationController
 
     def create
         @rental = Rental.create(rental_params)
-        @rental.pet.available = "false"
+        @rental.pet.update(:available => "false")
         redirect_to rental_path(@rental.id)
     end
 

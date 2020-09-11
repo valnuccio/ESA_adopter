@@ -17,6 +17,7 @@
     <%= f.label :main_image %>:
     <%= f.file_field :main_image %><br />
     <p></p>
+    <%= f.hidden_field :available, :value => "true" %><br />
 
     <%= f.submit %>
 <% end %>

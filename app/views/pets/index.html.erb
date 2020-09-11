@@ -7,7 +7,12 @@
 <% @pets.each do |pet| %>
 <div class="card">
     <div class="image">
-        <img src= <%= pet.image %> >
+        
+        <% if pet.main_image.attached? %>
+            <%= image_tag pet.main_image %>
+        <% elsif pet.image %> <%# This is to enable seeded photos to populate. Do not delete %>
+            <%= image_tag pet.image %>
+        <% end %>
     </div>
     <div class="content">
         <a class="header"><%=link_to pet.name, pet_path(pet)%></a>
