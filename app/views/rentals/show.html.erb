@@ -9,12 +9,9 @@
 
 
 What would you like to do now?
-<br>
-<br>
-<br>
 <ul>
-<li><%= link_to "Check out Other Pets", pets_path%></li>
-<li><%= link_to "Go back to my User Page", user_path%></li>
-<li><%= link_to "View my Rental history", rentals_path %></li>
+    <li><%= link_to "Check out Other Pets", pets_path%></li>
+    <li><%= link_to "Go back to my User Page", user_path(@rental.user)%></li>
+    <li><%= link_to "View my Rental history", rentals_path %></li>
 </ul>
 </div>

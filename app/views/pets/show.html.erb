@@ -1,6 +1,6 @@
 
-
-
+<p></p>
+<div class="ui container">
 <% if @pet.main_image.attached? %>
     <%= image_tag @pet.main_image %>
     <% elsif @pet.image %> <%# This is to enable seeded photos to populate. Do not delete %>
@@ -76,3 +76,4 @@
     <%# Add rented pet to user %>
     <%# Can not rent a dog you own %>
 <% end %>
+</div>
