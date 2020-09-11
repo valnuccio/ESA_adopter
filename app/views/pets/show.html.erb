@@ -44,18 +44,16 @@
 <p>
 <div>
     <%= label_tag "Available:" %>
-    <% if @pet.available == "true" %>
-        <p>Pet is currently available! </p>
-    <% else%>
-        <% if @pet.available == "false" %>
-            <p>"Pet is currently being rented out. Why not checkout some of our other pets?</p>
-        <% else %>
-            <% if @pet.user_id != current_user.id %>
+    <% if @pet.user_id == current_user.id %>
+    
+        <p>You already love <%= @pet.name %> so much! Let someone love them too! </p>
+        <%= link_to "Back to All Pets", pets_path(@pets) %>
+        <% elsif @pet.available == "true" %>
+            <p>Pet is currently available! </p>
+            <% elsif @pet.available == "false" %>
                 <p>"Pet is currently being rented out. Why not checkout some of our other pets?</p>
                 <%= link_to "Back to All Pets", pets_path(@pets) %>
             <% end %>
-            <% end %>
-    <% end %>
 </div>
 
 
