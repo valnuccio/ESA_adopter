@@ -1,77 +1,79 @@
 
-<p></p>
-<div class="ui container">
-<% if @pet.main_image.attached? %>
-    <%= image_tag @pet.main_image %>
-    <% elsif @pet.image %> <%# This is to enable seeded photos to populate. Do not delete %>
-        <%= image_tag @pet.image %>
-<% end %>
-
-<% if @pet.user == current_user %>
-        <% link_to "Edit Pet Profile", edit_pet_path %>
-<% end %>
-<div>
-    <%= label_tag "Name:" %>
-    <%= @pet.name %>
-</div>
-<p>
-<div>
-    <%= label_tag "Breed:" %>
-    <%= @pet.breed %>
-</div>
-<p>
-<div>
-    <%= label_tag "Rating:" %>
-    <%= @pet.rating %>
-</div>
-<p>
-<div>
-    <%= label_tag "Bio:" %>
-    <%= @pet.bio %>
-</div>
-<p>
-
-<p>
-<div>
-    <%= label_tag "Cost:" %>
-    $<%= @pet.cost %> per day
-</div>
-<p>
-<div>
-<%= label_tag "Owner:" %>
-<%= link_to @pet.user.name, user_path(@pet.user) %>
-</div>
-<p>
-<div>
-    <%= label_tag "Available:" %>
-    <% if @pet.user_id == current_user.id %>
-    
-        <p>You already love <%= @pet.name %> so much! Let someone love them too! </p>
-        <%= link_to "Back to All Pets", pets_path(@pets) %>
-        <% elsif @pet.available == "true" %>
-            <p>Pet is currently available! </p>
-            <% elsif @pet.available == "false" %>
-                <p>"Pet is currently being rented out. Why not checkout some of our other pets?</p>
-                <%= link_to "Back to All Pets", pets_path(@pets) %>
-            <% end %>
-</div>
 
 
-<p>
-
-    <% if @pet.available == "true" && @pet.user_id != current_user.id %>
-        <%= form_for Rental.new do |f|%>
-        <%= f.label :rent_length, "How many days would you like to rent #{@pet.name} for?" %> 
-        <%= f.number_field :rent_length, max: 30, min: 1 %>
-        <%= f.hidden_field :pet_id, value: @pet.id %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit%>
+    <p></p>
+    <div class="margins">
+    <% if @pet.main_image.attached? %>
+        <%= image_tag @pet.main_image %>
+        <% elsif @pet.image %> <%# This is to enable seeded photos to populate. Do not delete %>
+            <%= image_tag @pet.image %>
     <% end %>
 
+    <% if @pet.user == current_user %>
+            <% link_to "Edit Pet Profile", edit_pet_path %>
+    <% end %>
+    <div>
+        <%= label_tag "Name:" %>
+        <%= @pet.name %>
+    </div>
+    <p>
+    <div>
+        <%= label_tag "Breed:" %>
+        <%= @pet.breed %>
+    </div>
+    <p>
+    <div>
+        <%= label_tag "Rating:" %>
+        <%= @pet.rating %>
+    </div>
+    <p>
+    <div>
+        <%= label_tag "Bio:" %>
+        <%= @pet.bio %>
+    </div>
+    <p>
 
-    
-    <%# Must change @pet.available to false %>
-    <%# Add rented pet to user %>
-    <%# Can not rent a dog you own %>
-<% end %>
-</div>
+    <p>
+    <div>
+        <%= label_tag "Cost:" %>
+        $<%= @pet.cost %> per day
+    </div>
+    <p>
+    <div>
+    <%= label_tag "Owner:" %>
+    <%= link_to @pet.user.name, user_path(@pet.user) %>
+    </div>
+    <p>
+    <div>
+        <%= label_tag "Available:" %>
+        <% if @pet.user_id == current_user.id %>
+        
+            <p>You already love <%= @pet.name %> so much! Let someone love them too! </p>
+            <%= link_to "Back to All Pets", pets_path(@pets) %>
+            <% elsif @pet.available == "true" %>
+                <p>Pet is currently available! </p>
+                <% elsif @pet.available == "false" %>
+                    <p>"Pet is currently being rented out. Why not checkout some of our other pets?</p>
+                    <%= link_to "Back to All Pets", pets_path(@pets) %>
+                <% end %>
+    </div>
+
+
+    <p>
+
+        <% if @pet.available == "true" && @pet.user_id != current_user.id %>
+            <%= form_for Rental.new do |f|%>
+            <%= f.label :rent_length, "How many days would you like to rent #{@pet.name} for?" %> 
+            <%= f.number_field :rent_length, max: 30, min: 1 %>
+            <%= f.hidden_field :pet_id, value: @pet.id %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit%>
+        <% end %>
+
+
+        
+        <%# Must change @pet.available to false %>
+        <%# Add rented pet to user %>
+        <%# Can not rent a dog you own %>
+    <% end %>
+    </div>
