@@ -1,45 +1,46 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show, :edit, :update, :destroy]
 
-def index
-    @users= User.all
-end
+    def index
+        @users= User.all
+    end
 
-def show
+    def show
 
-end
+    end
 
-def new
-    @user = User.new
-end
+    def new
+        @user = User.new
+    end
 
-def create
+    def create
 
-end
+    end
 
-def update
+    def update
+        @user.update(user_params)
+        
+        redirect_to user_path(@user)
+    end
 
-end
-
-def not_me
-
-end
-
-
-private
-def find_user
-    @user = User.find(params[:id])
-    
-end
+    def add_money
+        @user = User.find(params[:user][:id])
+        @user.wallet = (@user.wallet + params[:user][:wallet].to_f)
+        @user.save
+        redirect_to user_path(@user)
+    end
 
 
+    private
+    def find_user
+        @user = User.find(params[:id])
+    end
 
-def verify_self
-  
+    def user_params
+        params.require(:user).permit!
+    end
 
-end
-    
-
-
-
+    # def add_money_params
+    #     params.require(:user).permit(:wallet)
+    # end
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
   root to: "home#index"
   
-
+  patch 'users/add_money', to: 'users#add_money', as: "add_money"
 
   # devise_for :installs
   resources :items
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users
   
   # get 'users/id', to: 'users#not_me', as: 'not_me'
-
+  
   
   
   

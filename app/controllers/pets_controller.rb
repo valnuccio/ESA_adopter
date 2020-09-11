@@ -16,7 +16,6 @@ class PetsController < ApplicationController
     end
 
     def create
-        
         @pet = Pet.new(pet_params)
         @pet.user_id = current_user.id
         @pet.save
@@ -29,8 +28,8 @@ class PetsController < ApplicationController
     end
 
     def update
-    @pet.update(pet_params)
-    redirect_to user_path(@pet.user)
+        @pet.update(pet_params)
+        redirect_to user_path(@pet.user)
     end
 
     def destroy
@@ -41,7 +40,6 @@ class PetsController < ApplicationController
     def rent_pet
         
     end
-    
 
     private
 

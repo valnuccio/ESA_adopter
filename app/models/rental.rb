@@ -8,14 +8,13 @@ class Rental < ApplicationRecord
                 if self.pet.user_id == self.user_id
                 self.errors.add(:user_id, "Can't rent your own pet")
                 end
-
         end
 
         def cost
-            self.rent_length * self.pet.cost 
+                self.rent_length * self.pet.cost 
         end
 
-      
+
 
                         
 

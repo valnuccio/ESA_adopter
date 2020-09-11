@@ -33,7 +33,7 @@
                 <li> <%=link_to pet.name, pet_path(pet) %></li>
             <% end %>
         </ul>
-          <%= link_to "Find a pet to rent", pets_path%> <br>
+          <%= button_to "Rent A Pet", pets_path, :method => "get", :class => 'ui black button'%> <br>
 
     </div>
     <br>
@@ -48,13 +48,22 @@
             <p> You have no pets in the database </p>
         <% end %>
         </ul>
-          <%= button_to "Add Pets", new_pet_path, :method => "get" %> <br>
+          <%= button_to "Add Pets", new_pet_path, :method => "get", :class => 'ui black button' %> <br>
     </div>
-
+    <div>
+        
+        <h3>Wallet</h3> $<%= @user.wallet %>
+        
+        <%= form_for @user, :url => {:action => "add_money"} do |f| %>
+            <%= f.label :wallet, "How much would you like to add?" %>
+            <%= f.number_field :wallet, min: 5 %>
+            <%= f.hidden_field :id, value: @user.id %>
+            <%= f.submit "Submit", disable_with: 'Submiting...' %>
+        <% end %>
+        
+    </div>
     <hr>
-    
-  
-    
+
 <%  else  %>
     
     <h1 class="title"> <%= @user.name.titleize %> </h1> 
@@ -100,10 +109,9 @@
         <% end %>
         </ul>
     </div>
-                
+
+     
     </div>
-
-    
-
 <% end %>
+
 </div>

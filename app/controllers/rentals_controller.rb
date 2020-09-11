@@ -18,6 +18,7 @@ class RentalsController < ApplicationController
     def create
         @rental = Rental.create(rental_params)
         @rental.pet.update(:available => "false")
+        @rental.user.update(:wallet => (@rental.user.wallet - @rental.cost))
         redirect_to rental_path(@rental.id)
     end
 
