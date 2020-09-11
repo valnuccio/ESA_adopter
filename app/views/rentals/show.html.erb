@@ -8,10 +8,4 @@
 <h3>$<%= @rental.cost %> will be deducted from your account and <%= @rental.pet.user.name %> will be in touch with you soon to coordinate pickup! </h3>
 
 
-What would you like to do now?
-<ul>
-    <li><%= link_to "Check out Other Pets", pets_path%></li>
-    <li><%= link_to "Go back to my User Page", user_path(@rental.user)%></li>
-    <li><%= link_to "View my Rental history", rentals_path %></li>
-</ul>
 </div>

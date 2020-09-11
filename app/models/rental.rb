@@ -15,6 +15,10 @@ class Rental < ApplicationRecord
             self.rent_length * self.pet.cost 
         end
 
+      
+
+                        
+
 
 
 end
