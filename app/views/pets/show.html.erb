@@ -9,8 +9,13 @@
             <%= image_tag @pet.image %>
     <% end %>
 
-    <% if @pet.user == current_user %>
-            <% link_to "Edit Pet Profile", edit_pet_path %>
+    <% if @pet.user.id == current_user.id %>
+    <br>
+    <br>
+    <br>
+    
+            <%= link_to "Edit Pet Profile", edit_pet_path %>
+            <br><br><br>
     <% end %>
     <div>
         <%= label_tag "Name:" %>
@@ -60,8 +65,13 @@
 
 
     <p>
+            <% if current_user.wallet < @pet.cost && @pet.available == "true"%>
+               <p>You don't have enough money in your wallet to rent right now! Head back to your user page to refill it.</p>
+               <%= link_to "Return to My Profile", user_path(current_user.id) %>
+            <% end %>
+           
 
-        <% if @pet.available == "true" && @pet.user_id != current_user.id %>
+        <% if @pet.available == "true" && @pet.user_id != current_user.id && current_user.wallet > @pet.cost%>
             <%= form_for Rental.new do |f|%>
             <%= f.label :rent_length, "How many days would you like to rent #{@pet.name} for?" %> 
             <%= f.number_field :rent_length, max: 30, min: 1 %>
@@ -69,6 +79,11 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.submit%>
         <% end %>
+
+     
+     
+
+
 
 
         

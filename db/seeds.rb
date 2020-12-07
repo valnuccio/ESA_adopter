@@ -17,7 +17,7 @@ User.destroy_all
 Pet.destroy_all
 
 
-5.times do
+10.times do
     # get random user photo from api
     response = RestClient.get('https://randomuser.me/api/')
     

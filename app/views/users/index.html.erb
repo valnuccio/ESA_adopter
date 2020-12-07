@@ -3,31 +3,33 @@
 
 <div class="ui link cards">
 <% @users.each do |user| %>
-<div class="card">
-    <div class="image">
-        
-        <% if user.main_image.attached? %>
-            <%= image_tag user.main_image %>
-        <% elsif user.img_url %> <%# This is to enable seeded photos to populate. Do not delete %>
-            <%= image_tag user.img_url %>
-        <% end %>
-    </div>
-    <div class="content">
-        <a class="header"><%=link_to user.name, user_path(user)%></a>
-        <div class="meta">
-            <span class="date">Joined in 2013</span>
+    <%if user != current_user %>
+        <div class="card">
+            <div class="image">
+                
+                <% if user.main_image.attached? %>
+                    <%= image_tag user.main_image %>
+                <% elsif user.img_url %> <%# This is to enable seeded photos to populate. Do not delete %>
+                    <%= image_tag user.img_url %>
+                <% end %>
+            </div>
+            <div class="content">
+                <a class="header"><%=link_to user.name, user_path(user)%></a>
+                <div class="meta">
+                    <span class="date">Joined in 2013</span>
+                </div>
+                <div class="description">
+                    <%= user.bio %>
+                </div>
+            </div>
+            <div class="extra content">
+                <a>
+                <i class="user icon"></i>
+                
+                </a>
+            </div>
         </div>
-        <div class="description">
-            <%= user.bio %>
-        </div>
+    <% end %>
+    <% end %>
     </div>
-    <div class="extra content">
-        <a>
-        <i class="user icon"></i>
-        
-        </a>
-    </div>
-</div>
-<% end %>
-</div>
 </div>

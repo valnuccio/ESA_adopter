@@ -16,10 +16,16 @@ class RentalsController < ApplicationController
     end
 
     def create
-        @rental = Rental.create(rental_params)
-        @rental.pet.update(:available => "false")
-        @rental.user.update(:wallet => (@rental.user.wallet - @rental.cost))
-        redirect_to rental_path(@rental.id)
+        @rental = Rental.new(rental_params)
+        if @rental.valid?
+            @rental.save
+            @rental.pet.update(:available => "false")
+            @rental.user.update(:wallet => (@rental.user.wallet - @rental.cost))
+            redirect_to rental_path(@rental.id)    
+        else 
+            flash.now[:messages] = @rental.errors.full_messages[0]
+            render :show    
+        end   
     end
 
     def edit
@@ -44,5 +50,13 @@ class RentalsController < ApplicationController
     def rental_params
         params.require(:rental).permit!
     end
+
+    def raise_and_rescue  
+        begin  
+          raise 'An error has occured.'    
+        rescue  
+          puts 'You do not have enough funds for this rental length. Try again or add money to your wallet.' 
+        end   
+    end  
 
 end

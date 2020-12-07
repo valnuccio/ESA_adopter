@@ -1,11 +1,25 @@
 <div class="margins">
-<h1>Congratulations!</h1>
+<% if @rental.id? %>
+    <h1>Congratulations!</h1>
 
 
-<h2>You have reserved 
-<%= @rental.pet.name %> for <%= @rental.rent_length %> days!</h2>
+    <h2>You have reserved 
+    <%= @rental.pet.name %> for <%= @rental.rent_length %> days!</h2>
 
-<h3>$<%= @rental.cost %> will be deducted from your account and <%= @rental.pet.user.name %> will be in touch with you soon to coordinate pickup! </h3>
+    <h3>$<%= @rental.cost %> will be deducted from your account and <%= @rental.pet.user.name %> will be in touch with you soon to coordinate pickup! </h3>
 
 
-</div>
+    </div>
+<% else %>
+    <h1>Rental Unsuccessful</h1>
+
+
+    <h2>Your reservation of
+    <%= @rental.pet.name %> for <%= @rental.rent_length %> days did not go through due to insufficient wallet funds</h2>
+
+    <h3>Please visit your user page to add money to your account </h3>
+    <%= link_to "Return to Account to Add Money", user_path(current_user) %>
+
+    </div>
+<% end %>
+
