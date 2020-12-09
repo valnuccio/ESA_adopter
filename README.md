@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## What is this app?
 
-* Ruby version
+This is a Ruby on Rails app created to faciliate pet rentals directly from their owners. 
 
-* System dependencies
+You can create and edit a user profile, rent a pet, list a pet you own, and delete said user profile. When searching for pet you can search by pet name or my owner. 
 
-* Configuration
+Some of the technolies played around with here are:
 
-* Database creation
+Devise
+Active Storage
+RestClient
+Faker Gem
 
-* Database initialization
+Styling:
+Semantic UI and Customized CSS
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Installation
 
-* Deployment instructions
+bundle install should do the trick. 
 
-* ...
+
+## Running
+
+When you begin you will have to "Sign Up" as a user. 
+Make sure to add money to your "wallet" on the Account Page to be able to rent any pets.
+
+## Thanks for checking it out. If you find any bugs please don't hesitate to let me know. 
