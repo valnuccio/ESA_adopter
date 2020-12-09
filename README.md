@@ -5,11 +5,11 @@
 
 This is a Ruby on Rails app created to faciliate pet rentals directly from their owners. 
 
-You can create and edit a user profile, rent a pet, list a pet you own, and delete said user profile. When searching for pet you can search by pet name or my owner. 
+You can create and edit a user profile, rent a pet, list a pet you own, and delete said user profile. When searching for a pet you can search by pet name or my owner. 
 
 Some of the technolies played around with here are:
 
-Devise
+Devise Authentication
 Active Storage
 RestClient
 Faker Gem
